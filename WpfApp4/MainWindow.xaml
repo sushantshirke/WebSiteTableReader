@@ -1,0 +1,74 @@
+﻿<Window x:Class="WpfApp4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp4"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        Title="MainWindow" Height="450" Width="800">
+
+  
+    
+    <Grid>
+        <Grid  VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="6*" />
+                
+                
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" HorizontalAlignment="Left" Orientation="Horizontal"  Margin="2,2,0,2">
+                <Label Height="30" Width="70" Margin="5,5,5,5" >Base URL</Label>
+                <TextBox Height="30" Name="txtBaseUrl" Width="850" IsEnabled="False" HorizontalContentAlignment="Stretch" ></TextBox>
+            </StackPanel>
+            <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Horizontal" Margin="2,2,2,2" >
+                <TextBox Margin="5,5,5,5" Text="{Binding Path=dateString, FallbackValue='30AUG2018'}" Height="30" Width="250" Name="dateValue" ></TextBox>
+                <Button Click="Button_Click"  Width="70" Height="30">Set Values</Button>
+                <Button Margin="5,5,5,5" Width="70" Click="Export_click" >Export</Button>
+            </StackPanel>
+            <!--<StackPanel Grid.Row="2" Orientation="Vertical" >-->
+                <DataGrid Grid.Row="2" Name="dataGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch"  VerticalAlignment="Center" ItemsSource="{Binding}" HorizontalScrollBarVisibility="Visible" 
+                         VerticalScrollBarVisibility="Visible" Margin="5,5,5,5"   >
+
+                    <DataGrid.Columns>
+
+
+                        <DataGridTextColumn Header="OI" Binding="{Binding Path=Call_OpenInterest}" />
+                        <DataGridTextColumn Header="Chng in OI" Binding="{Binding Path=Call_ChangeinOpenInterest}" />
+                        <DataGridTextColumn Header="Volume" Binding="{Binding Path=Call_TradedVolume}" />
+                        <DataGridTextColumn Header="IV" Binding="{Binding Path=Call_ImpliedVolatility}" />
+                        <DataGridTextColumn Header="LTP" Binding="{Binding Path=Call_LastTradedPrice}" />
+                        <DataGridTextColumn Header="Net Chng" Binding="{Binding Path=Call_NetChange}" />
+                        <DataGridTextColumn Header="Bid Qty" Binding="{Binding Path=Call_BidQuantity}" />
+                        <DataGridTextColumn Header="Bid Price" Binding="{Binding Path=Call_BidPrice}" />
+                        <DataGridTextColumn Header="Ask Price" Binding="{Binding Path=Call_AskPrice}" />
+                        <DataGridTextColumn Header="Ask Qty" Binding="{Binding Path=Call_AskQuantity}" />
+
+                        <DataGridTextColumn Header="Strike Price" Binding="{Binding Path=StrikePrice}"  />
+
+                        <DataGridTextColumn Header="Bid Qty" Binding="{Binding Path=Put_BidQuantity}" />
+                        <DataGridTextColumn Header="Bid Price" Binding="{Binding Path=Put_BidPrice}" />
+                        <DataGridTextColumn Header="Ask Price" Binding="{Binding Path=Put_AskPrice}" />
+                        <DataGridTextColumn Header="Ask Qty" Binding="{Binding Path=Put_AskQuantity}" />
+                        <DataGridTextColumn Header="Net Chng" Binding="{Binding Path=Put_NetChange}" />
+                        <DataGridTextColumn Header="LTP" Binding="{Binding Path=Put_LastTradedPrice}" />
+                        <DataGridTextColumn Header="IV" Binding="{Binding Path=Put_ImpliedVolatility}" />
+                        <DataGridTextColumn Header="Volume" Binding="{Binding Path=Put_TradedVolume}" />
+                        <DataGridTextColumn Header="Chng in OI" Binding="{Binding Path=Put_ChangeinOpenInterest}" />
+                        <DataGridTextColumn Header="OI" Binding="{Binding Path=Put_OpenInterest}" />
+
+
+                    </DataGrid.Columns>
+                    
+                    
+                </DataGrid>
+            <!--</StackPanel>-->
+
+        </Grid>
+
+
+    </Grid>
+</Window>
